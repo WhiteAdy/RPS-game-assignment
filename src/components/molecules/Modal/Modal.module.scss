@@ -1,0 +1,87 @@
+.Modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0);
+    place-items: center;
+    display: none;
+    transition: background-color calc(var(--transition-duration) / 2) var(--transition-tf-ease);
+
+    &.isOpen {
+        display: grid;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        .Container {
+            animation: open var(--transition-duration) var(--transition-tf-wobble);
+        }
+    }
+
+    &.isClosing {
+        display: grid;
+        background-color: rgba(0, 0, 0, 0);
+
+        .Container {
+            animation: close calc(var(--transition-duration) / 2) var(--transition-tf-ease);
+        }
+    }
+
+    .Container {
+        width: clamp(350px, 80%, 800px);
+        height: clamp(350px, 80%, 500px);
+        background: white;
+        border-radius: var(--border-radius);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        color: var(--text-black);
+
+        .Header {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            font-size: var(--text-large);
+            border-bottom: 1px solid var(--bg-lighter);
+
+            .CloseIconBtn {
+                position: absolute;
+                right: var(--layout-padding);
+            }
+        }
+
+        .Body {
+            flex-grow: 1;
+            padding: var(--layout-padding);
+        }
+
+        .Footer {
+            height: 60px;
+            padding: var(--layout-padding);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: var(--layout-padding);
+            border-top: 1px solid var(--bg-lighter);
+        }
+    }
+}
+
+@keyframes open {
+    from {
+        scale: 0.1;
+    }
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes close {
+    from {
+        scale: 1;
+    }
+    to {
+        scale: 0.1;
+    }
+}

@@ -1,0 +1,16 @@
+.IconButton {
+    width: 35px;
+    height: 35px;
+    background: unset;
+    border: unset;
+    transition: all var(--transition-duration) var(--transition-tf-ease);
+    border-radius: 50%;
+
+    &:hover:not(:disabled) {
+        background-color: var(--bg-dark);
+
+        img {
+            filter: invert(1);
+        }
+    }
+}

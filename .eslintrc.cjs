@@ -15,5 +15,6 @@ module.exports = {
             'error',
             { fixStyle: 'separate-type-imports' },
         ],
+        '@typescript-eslint/no-unused-vars': 'warn',
     },
 };

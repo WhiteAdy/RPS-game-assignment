@@ -1,0 +1,32 @@
+.Button {
+    transition: all var(--transition-duration) var(--transition-tf-ease);
+    padding: 8px 14px;
+    border-radius: var(--border-radius);
+
+    &:hover:not(:disabled) {
+        background-color: var(--bg-dark);
+        color: var(--text-white);
+    }
+
+    &.outlinedVariant {
+        border: 1px solid var(--bg-dark);
+        background-color: var(--bg-white);
+    }
+
+    &.filledVariant {
+        border: 1px solid var(--bg-dark);
+        background-color: var(--bg-dark);
+        color: var(--text-white);
+    }
+
+    &.textVariant {
+        border: 1px solid var(--bg-white);
+        background-color: var(--bg-white);
+
+        &:hover:not(:disabled) {
+            background-color: var(--bg-white);
+            color: var(--text-black);
+            border-color: var(--bg-dark);
+        }
+    }
+}

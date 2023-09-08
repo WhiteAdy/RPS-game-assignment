@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import { MainLayout } from 'components/layouts';
-import { GameArea, ScoreArea } from 'components/organisms';
+import './index.scss';
+import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <MainLayout>
-            <GameArea />
-            <ScoreArea />
-        </MainLayout>
+        <App />
     </React.StrictMode>
 );
