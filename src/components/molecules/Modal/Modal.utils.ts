@@ -13,6 +13,6 @@ const BTN_PROPS = {
     } as ModalBtnProps,
 };
 
-const MODAL_CLOSING_DURATION = 175;
+const MODAL_CLOSING_DURATION = 150;
 
 export { BTN_PROPS, MODAL_CLOSING_DURATION };
