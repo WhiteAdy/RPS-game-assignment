@@ -1,8 +1,8 @@
 .TextField {
     display: grid;
     grid-template-rows: 24px 36px;
-    gap: 4px;
-    width: 180px;
+    gap: var(--layout-padding);
+    width: 200px;
 
     &.fullWidth {
         width: 100%;

@@ -1,5 +1,5 @@
 import type { ModalBtnProps } from 'components/molecules';
-import { Modal } from 'components/molecules';
+import { Instructions, Modal } from 'components/molecules';
 import { useGameContext } from 'hooks';
 import { TextField } from 'components/atoms';
 import type { ChangeEventHandler } from 'react';
@@ -35,26 +35,7 @@ export default function WelcomeModal() {
             acceptBtnProps={acceptBtnProps}
             hideCloseIcon
         >
-            <p>Instructions:</p>
-            <ul className="List">
-                <li>
-                    Choose your player name, the progress for this name will be saved locally so
-                    that you can track your progress in future sessions.
-                </li>
-                <li>
-                    Your current score can be seen on the right side of the screen, along with the
-                    leaderboard.
-                </li>
-                <li>
-                    After you click "Begin round" you will have 3 seconds to choose your weapon,
-                    otherwise a random one will be chosen for you.
-                </li>
-                <li>
-                    You can add your own weapons and rules! Do that by clicking "Add weapons"
-                    button.
-                </li>
-                <li>You can reset the game progress at any time by clicking the "Reset" button.</li>
-            </ul>
+            <Instructions />
             <TextField
                 title="Player Name:"
                 placeholder="Max. 18 characters"

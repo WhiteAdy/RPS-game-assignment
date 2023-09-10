@@ -1,0 +1,17 @@
+.Instructions {
+    .Title {
+        font-size: var(--text-small);
+        font-weight: 500;
+    }
+    .List {
+        display: flex;
+        flex-direction: column;
+        padding: var(--layout-padding);
+        padding-left: calc(var(--layout-padding) * 2);
+        margin-block: var(--layout-padding);
+        font-size: var(--text-small);
+        background: var(--bg-lighter);
+        border-radius: var(--border-radius);
+        gap: var(--layout-padding);
+    }
+}

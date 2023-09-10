@@ -42,7 +42,6 @@ export default function useGameContext() {
 
     const registerPlayerName = (playerName: PlayerName) => {
         if (!playerExistsInDb(playerName)) {
-            console.log('nu exista, facem game history...');
             setGameHistory({ ...gameHistory, [playerName]: DEFAULT_PLAYER_DATA });
         }
         return setCurrentPlayerName(playerName);
