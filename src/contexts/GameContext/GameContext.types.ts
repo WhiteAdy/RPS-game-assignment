@@ -33,6 +33,8 @@ interface GameContextValue {
     setGameHistory: Dispatch<SetStateAction<GameHistory>>;
     currentPlayerName: PlayerName;
     setCurrentPlayerName: Dispatch<SetStateAction<PlayerName>>;
+    isOpenWelcomeModal: boolean;
+    setIsOpenWelcomeModal: Dispatch<SetStateAction<boolean>>;
 }
 
 interface GameContextProvider {

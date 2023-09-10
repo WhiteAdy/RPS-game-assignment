@@ -7,7 +7,8 @@ import type {
     Weapons,
 } from './GameContext.types';
 import { DEFAULT_GAME_CONTEXT_VALUE, DEFAULT_WEAPONS } from './GameContext.utils';
-import useLocalStorage from '../../hooks/useLocalStorage/useLocalStorage';
+import { WelcomeModal } from 'components/organisms';
+import { useLocalStorage } from 'hooks';
 
 const GameContext = createContext<GameContextValue>(DEFAULT_GAME_CONTEXT_VALUE);
 
@@ -21,6 +22,7 @@ export default function GameContextProvider({ children }: GameContextProvider) {
         DEFAULT_GAME_CONTEXT_VALUE.gameHistory
     );
     const [currentPlayerName, setCurrentPlayerName] = useState<PlayerName>('');
+    const [isOpenWelcomeModal, setIsOpenWelcomeModal] = useState(true);
 
     return (
         <GameContext.Provider
@@ -32,9 +34,12 @@ export default function GameContextProvider({ children }: GameContextProvider) {
                 setGameHistory,
                 currentPlayerName,
                 setCurrentPlayerName,
+                isOpenWelcomeModal,
+                setIsOpenWelcomeModal,
             }}
         >
             {children}
+            <WelcomeModal />
         </GameContext.Provider>
     );
 }

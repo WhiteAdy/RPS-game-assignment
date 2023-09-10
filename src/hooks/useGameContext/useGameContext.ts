@@ -11,6 +11,8 @@ export default function useGameContext() {
         setCurrentPlayerName,
         gameHistory,
         setGameHistory,
+        isOpenWelcomeModal,
+        setIsOpenWelcomeModal,
     } = useContext(GameContext);
 
     const allWeapons = [...defaultWeapons, ...customWeapons];
@@ -61,6 +63,9 @@ export default function useGameContext() {
         console.warn('No player exists in the game history yet!');
     };
 
+    const showWelcomeModal = () => setIsOpenWelcomeModal(true);
+    const hideWelcomeModal = () => setIsOpenWelcomeModal(false);
+
     return {
         currentPlayerName,
         allWeapons,
@@ -71,5 +76,8 @@ export default function useGameContext() {
         removeCustomWeapon,
         registerPlayerName,
         addToPlayerScore,
+        showWelcomeModal,
+        isOpenWelcomeModal,
+        hideWelcomeModal,
     };
 }

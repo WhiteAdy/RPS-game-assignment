@@ -52,6 +52,8 @@ const DEFAULT_GAME_CONTEXT_VALUE: GameContextValue = {
     setGameHistory: noop,
     currentPlayerName: '',
     setCurrentPlayerName: noop,
+    isOpenWelcomeModal: true,
+    setIsOpenWelcomeModal: noop,
 };
 
 export { DEFAULT_WEAPONS, DEFAULT_GAME_CONTEXT_VALUE, DEFAULT_PLAYER_DATA };

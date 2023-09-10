@@ -4,7 +4,7 @@ interface ModalBtnProps {
     hidden?: boolean;
 }
 
-interface Modal {
+interface ModalProps {
     title: string;
     isOpen?: boolean;
     onAccept?: () => void;
@@ -17,4 +17,4 @@ interface Modal {
 
 type InternalModalStatus = 'open' | 'isClosing' | 'closed';
 
-export type { Modal, ModalBtnProps, InternalModalStatus };
+export type { ModalProps, ModalBtnProps, InternalModalStatus };

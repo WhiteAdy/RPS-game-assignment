@@ -1,4 +1,4 @@
-import type { InternalModalStatus, Modal } from './Modal.types';
+import type { InternalModalStatus, ModalProps } from './Modal.types';
 import { BTN_PROPS, MODAL_CLOSING_DURATION } from './Modal.utils';
 import clsx from 'clsx';
 import crossIcon from 'assets/icons/cross.svg';
@@ -22,12 +22,13 @@ export default function Modal({
     } = BTN_PROPS.CLOSE,
     hideCloseIcon = false,
     children,
-}: Modal) {
+}: ModalProps) {
     const [internalModalStatus, setInternalModalStatus] = useState<InternalModalStatus>(
         isOpen ? 'open' : 'closed'
     );
 
     const modalElementRef = useRef<HTMLDivElement>(null);
+    const isFirstRenderRef = useRef(true);
 
     const shouldShowIsOpenClassName = ['open', 'isClosing'].includes(internalModalStatus);
 
@@ -59,17 +60,21 @@ export default function Modal({
 
     useEffect(() => {
         if (!isOpen) {
-            setInternalModalStatus('isClosing');
-            removeEventListeners();
-            setTimeout(() => {
-                setInternalModalStatus('closed');
-            }, MODAL_CLOSING_DURATION);
+            if (!isFirstRenderRef.current) {
+                setInternalModalStatus('isClosing');
+                removeEventListeners();
+                setTimeout(() => {
+                    setInternalModalStatus('closed');
+                }, MODAL_CLOSING_DURATION);
+            }
+            isFirstRenderRef.current = false;
         } else {
             setInternalModalStatus('open');
             addEventListeners();
         }
         return () => {
             removeEventListeners();
+            isFirstRenderRef.current = true;
         };
     }, [addEventListeners, isOpen, removeEventListeners]);
 

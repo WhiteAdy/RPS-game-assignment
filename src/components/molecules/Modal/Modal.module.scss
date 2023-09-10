@@ -44,6 +44,7 @@
             position: relative;
             font-size: var(--text-large);
             border-bottom: 1px solid var(--bg-lighter);
+            padding-inline: calc(var(--layout-padding) + 35px);
 
             .CloseIconBtn {
                 position: absolute;
@@ -54,6 +55,7 @@
         .Body {
             flex-grow: 1;
             padding: var(--layout-padding);
+            overflow-y: auto;
         }
 
         .Footer {
