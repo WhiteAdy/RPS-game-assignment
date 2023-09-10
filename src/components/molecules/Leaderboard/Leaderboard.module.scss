@@ -1,0 +1,16 @@
+.Leaderboard {
+    .NoEntriesText {
+        font-size: var(--text-xs);
+    }
+
+    .Grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: calc(var(--layout-padding) / 2);
+        font-size: var(--text-xs);
+
+        .Label {
+            font-weight: 600;
+        }
+    }
+}

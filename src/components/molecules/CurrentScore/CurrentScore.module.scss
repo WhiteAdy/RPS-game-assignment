@@ -1,0 +1,11 @@
+.CurrentScore {
+    .Entries {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: var(--layout-padding);
+    }
+
+    .Entry {
+        font-size: var(--text-xs);
+    }
+}
