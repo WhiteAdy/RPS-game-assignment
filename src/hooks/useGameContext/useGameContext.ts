@@ -41,12 +41,11 @@ export default function useGameContext() {
     };
 
     const registerPlayerName = (playerName: PlayerName) => {
-        if (!playerExistsInDb) {
+        if (!playerExistsInDb(playerName)) {
+            console.log('nu exista, facem game history...');
             setGameHistory({ ...gameHistory, [playerName]: DEFAULT_PLAYER_DATA });
-            setCurrentPlayerName(playerName);
-            return;
         }
-        console.warn('Playername already exists in the db, so no player was added!');
+        return setCurrentPlayerName(playerName);
     };
 
     const addToPlayerScore = (scoreType: keyof PlayerData) => {

@@ -1,33 +1,39 @@
 .Modal {
+    --backdrop-bg-closed: rgba(0, 0, 0, 0);
+    --backdrop-bg-open: rgba(0, 0, 0, 0.6);
     position: fixed;
     inset: 0;
     z-index: 999;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: var(--backdrop-bg-closed);
+    display: grid;
     place-items: center;
-    display: none;
-    transition: background-color calc(var(--transition-duration) / 2) var(--transition-tf-ease);
+    transition: all var(--transition-duration) var(--transition-tf-ease);
 
     &.isOpen {
-        display: grid;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: var(--backdrop-bg-open);
+        animation: backdropOpen var(--transition-duration) var(--transition-tf-ease);
+        pointer-events: all;
+        opacity: 1;
 
         .Container {
-            animation: open var(--transition-duration) var(--transition-tf-wobble);
+            animation: containerOpen var(--transition-duration) var(--transition-tf-wobble);
         }
     }
 
-    &.isClosing {
-        display: grid;
-        background-color: rgba(0, 0, 0, 0);
+    &.isClosed {
+        background-color: var(--backdrop-bg-closed);
+        animation: backdropClose var(--transition-duration) var(--transition-tf-ease);
+        pointer-events: none;
+        opacity: 0;
 
         .Container {
-            animation: close calc(var(--transition-duration) / 2) var(--transition-tf-ease);
+            animation: containerClose var(--transition-duration) var(--transition-tf-ease);
         }
     }
 
     .Container {
         width: clamp(350px, 80%, 800px);
-        height: clamp(350px, 80%, 500px);
+        height: clamp(350px, 80%, 510px);
         background: white;
         border-radius: var(--border-radius);
         display: flex;
@@ -70,7 +76,25 @@
     }
 }
 
-@keyframes open {
+@keyframes backdropOpen {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@keyframes backdropClose {
+    from {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes containerOpen {
     from {
         scale: 0;
     }
@@ -79,7 +103,7 @@
     }
 }
 
-@keyframes close {
+@keyframes containerClose {
     from {
         scale: 1;
     }

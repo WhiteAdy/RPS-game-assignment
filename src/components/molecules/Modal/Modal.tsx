@@ -1,9 +1,9 @@
-import type { InternalModalStatus, ModalProps } from './Modal.types';
-import { BTN_PROPS, MODAL_CLOSING_DURATION } from './Modal.utils';
+import type { ModalProps } from './Modal.types';
+import { BTN_PROPS } from './Modal.utils';
 import clsx from 'clsx';
 import crossIcon from 'assets/icons/cross.svg';
 import { Button, IconButton } from 'components/atoms';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 export default function Modal({
     title,
@@ -23,14 +23,7 @@ export default function Modal({
     hideCloseIcon = false,
     children,
 }: ModalProps) {
-    const [internalModalStatus, setInternalModalStatus] = useState<InternalModalStatus>(
-        isOpen ? 'open' : 'closed'
-    );
-
     const modalElementRef = useRef<HTMLDivElement>(null);
-    const isFirstRenderRef = useRef(true);
-
-    const shouldShowIsOpenClassName = ['open', 'isClosing'].includes(internalModalStatus);
 
     const clickOutsideHandler = useCallback(
         (e: MouseEvent) => {
@@ -59,30 +52,19 @@ export default function Modal({
     }, [clickOutsideHandler, escapeKeyPressHandler]);
 
     useEffect(() => {
-        if (!isOpen) {
-            if (!isFirstRenderRef.current) {
-                setInternalModalStatus('isClosing');
-                removeEventListeners();
-                setTimeout(() => {
-                    setInternalModalStatus('closed');
-                }, MODAL_CLOSING_DURATION);
-            }
-            isFirstRenderRef.current = false;
-        } else {
-            setInternalModalStatus('open');
-            addEventListeners();
-        }
+        if (!isOpen) removeEventListeners();
+        else addEventListeners();
         return () => {
             removeEventListeners();
-            isFirstRenderRef.current = true;
         };
     }, [addEventListeners, isOpen, removeEventListeners]);
 
     return (
         <div
             className={clsx(['Modal'], {
-                isOpen: shouldShowIsOpenClassName,
-                isClosing: internalModalStatus === 'isClosing',
+                isOpen: Boolean(isOpen),
+                // isClosing: internalModalStatus === 'isClosing',
+                isClosed: !isOpen,
             })}
             ref={modalElementRef}
         >

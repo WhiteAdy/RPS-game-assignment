@@ -15,6 +15,4 @@ interface ModalProps {
     children: React.ReactNode;
 }
 
-type InternalModalStatus = 'open' | 'isClosing' | 'closed';
-
-export type { ModalProps, ModalBtnProps, InternalModalStatus };
+export type { ModalProps, ModalBtnProps };

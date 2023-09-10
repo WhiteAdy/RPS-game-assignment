@@ -1,0 +1,23 @@
+.TextField {
+    display: grid;
+    grid-template-rows: 24px 36px;
+    gap: 4px;
+    width: 180px;
+
+    &.fullWidth {
+        width: 100%;
+    }
+
+    .Title {
+        font-size: var(--text-small);
+        font-weight: 500;
+    }
+
+    .Input {
+        padding: 6px var(--layout-padding);
+        letter-spacing: 1.25px;
+        font-size: var(--text-xs);
+        border-radius: var(--border-radius);
+        border: 1px solid var(--bg-dark-2);
+    }
+}

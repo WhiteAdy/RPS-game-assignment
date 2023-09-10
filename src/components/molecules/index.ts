@@ -1,2 +1,2 @@
 export { default as Modal } from './Modal/Modal';
-export type { ModalProps } from './Modal/Modal.types';
+export type { ModalProps, ModalBtnProps } from './Modal/Modal.types';
