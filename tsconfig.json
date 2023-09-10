@@ -23,7 +23,8 @@
             "components/*": ["./src/components/*"],
             "assets/*": ["./src/assets/*"],
             "hooks": ["./src/hooks"],
-            "contexts": ["./src/contexts"]
+            "contexts": ["./src/contexts"],
+            "utils": ["./src/utils"]
         }
     },
     "include": ["src"],

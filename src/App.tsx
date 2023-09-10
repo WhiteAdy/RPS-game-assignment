@@ -1,6 +1,7 @@
 import { MainLayout } from 'components/layouts';
 import { Modal } from 'components/molecules';
 import { GameArea, ScoreArea } from 'components/organisms';
+import { GameContextProvider } from 'contexts';
 import { useState } from 'react';
 
 export default function App() {
@@ -9,7 +10,7 @@ export default function App() {
     const closeModal = () => setIsModalOpen(false);
 
     return (
-        <>
+        <GameContextProvider>
             <MainLayout>
                 <GameArea openModal={openModal} />
                 <ScoreArea />
@@ -22,6 +23,6 @@ export default function App() {
             >
                 <div>aici modal body</div>
             </Modal>
-        </>
+        </GameContextProvider>
     );
 }
