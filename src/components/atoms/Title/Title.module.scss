@@ -2,4 +2,8 @@
     font-size: var(--text-medium);
     font-weight: 500;
     margin-bottom: calc(var(--layout-padding) / 2);
+
+    &.isCentered {
+        text-align: center;
+    }
 }

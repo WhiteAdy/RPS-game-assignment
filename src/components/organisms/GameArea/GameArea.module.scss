@@ -1,4 +1,24 @@
 .GameArea {
     background-color: #e25858;
     padding: var(--layout-padding);
+    display: grid;
+    grid-template-areas:
+        'Title Title'
+        'GameSection Sidebar'
+        'CardPicker CardPicker';
+    grid-template-rows: 50px 1fr auto;
+    grid-template-columns: 1fr 100px;
+    overflow: hidden;
+
+    &_Title {
+        grid-area: Title;
+    }
+
+    &_CardPicker {
+        transition: translate var(--transition-duration) var(--transition-tf-ease);
+        grid-area: CardPicker;
+        justify-self: center;
+        translate: 0 -20px;
+        // translate: 0 300px;
+    }
 }

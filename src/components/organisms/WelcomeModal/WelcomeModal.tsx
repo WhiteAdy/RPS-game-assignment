@@ -39,6 +39,7 @@ export default function WelcomeModal() {
                     maxLength={18}
                     value={playerName}
                     onChange={onChangePlayerName}
+                    autoFocus
                 />
             </form>
         </Modal>

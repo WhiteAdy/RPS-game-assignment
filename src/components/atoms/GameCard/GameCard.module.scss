@@ -1,0 +1,71 @@
+.GameCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    width: 120px;
+    position: relative;
+    border-radius: var(--border-radius);
+    background-color: transparent;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    border: none;
+    transition: scale var(--transition-duration) var(--transition-tf-ease);
+
+    &.isSelected {
+        outline: none;
+        scale: 1.2;
+
+        .content {
+            &::before {
+                inset: -75%;
+            }
+        }
+    }
+
+    .content {
+        background-color: var(--bg-dark-3);
+        width: calc(100% - 7px);
+        height: calc(100% - 7px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: var(--layout-padding);
+        border-radius: inherit;
+        position: relative;
+        padding: var(--layout-padding);
+        border: 3px solid white;
+
+        &::before {
+            content: '';
+            background-image: conic-gradient(#f00, #0f0, #00f, #0f0, #f00);
+            position: absolute;
+            inset: 35%;
+            z-index: -1;
+            transition: inset var(--transition-duration) var(--transition-tf-ease);
+            border-radius: inherit;
+            filter: blur(15px);
+            animation: rotate 2.5s linear infinite;
+        }
+
+        .title {
+            font-size: 18px;
+        }
+
+        .image {
+            max-width: 64%;
+            max-height: 70%;
+        }
+    }
+}
+
+@keyframes rotate {
+    from {
+        rotate: 0;
+    }
+    to {
+        rotate: 360deg;
+    }
+}
