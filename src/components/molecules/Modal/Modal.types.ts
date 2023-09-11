@@ -1,4 +1,4 @@
-interface ModalBtnProps {
+interface ModalBtnProps extends React.ComponentProps<'button'> {
     label?: string;
     disabled?: boolean;
     hidden?: boolean;

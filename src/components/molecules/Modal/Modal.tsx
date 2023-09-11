@@ -14,11 +14,13 @@ export default function Modal({
         hidden: acceptHidden = BTN_PROPS.ACCEPT.hidden,
         disabled: acceptDisabled = BTN_PROPS.ACCEPT.disabled,
         label: acceptLabel = BTN_PROPS.ACCEPT.label,
+        ...acceptRestProps
     } = BTN_PROPS.ACCEPT,
     closeBtnProps: {
         hidden: closeHidden = BTN_PROPS.CLOSE.hidden,
         disabled: closeDisabled = BTN_PROPS.CLOSE.disabled,
         label: closeLabel = BTN_PROPS.CLOSE.label,
+        ...closeRestProps
     } = BTN_PROPS.CLOSE,
     hideCloseIcon = false,
     children,
@@ -63,7 +65,6 @@ export default function Modal({
         <div
             className={clsx(['Modal'], {
                 isOpen: Boolean(isOpen),
-                // isClosing: internalModalStatus === 'isClosing',
                 isClosed: !isOpen,
             })}
             ref={modalElementRef}
@@ -82,12 +83,17 @@ export default function Modal({
                 <div className="Body">{children}</div>
                 <div className="Footer">
                     {!acceptHidden && (
-                        <Button disabled={acceptDisabled} variant="filled" onClick={onAccept}>
+                        <Button
+                            disabled={acceptDisabled}
+                            variant="filled"
+                            onClick={onAccept}
+                            {...acceptRestProps}
+                        >
                             {acceptLabel}
                         </Button>
                     )}
                     {!closeHidden && (
-                        <Button disabled={closeDisabled} onClick={onClose}>
+                        <Button disabled={closeDisabled} onClick={onClose} {...closeRestProps}>
                             {closeLabel}
                         </Button>
                     )}

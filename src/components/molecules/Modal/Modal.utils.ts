@@ -1,16 +1,16 @@
 import type { ModalBtnProps } from './Modal.types';
 
-const BTN_PROPS = {
+const BTN_PROPS: Record<'ACCEPT' | 'CLOSE', ModalBtnProps> = {
     ACCEPT: {
         hidden: false,
         disabled: false,
         label: 'Submit',
-    } as ModalBtnProps,
+    },
     CLOSE: {
         hidden: false,
         disabled: false,
         label: 'Cancel',
-    } as ModalBtnProps,
+    },
 };
 
 export { BTN_PROPS };
