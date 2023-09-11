@@ -1,4 +1,6 @@
 .Leaderboard {
+    overflow: hidden;
+
     .NoEntriesText {
         font-size: var(--text-xs);
     }
@@ -8,9 +10,14 @@
         grid-template-columns: repeat(4, 1fr);
         gap: calc(var(--layout-padding) / 2);
         font-size: var(--text-xs);
+        overflow-y: scroll;
+        max-height: calc(100% - calc(var(--layout-padding) * 2));
 
         .Label {
             font-weight: 600;
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-score-area);
         }
     }
 }

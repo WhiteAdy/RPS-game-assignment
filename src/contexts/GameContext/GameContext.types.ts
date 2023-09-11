@@ -16,7 +16,7 @@ interface WeaponRules {
 }
 
 interface Weapon {
-    name: string;
+    name: WeaponName;
     imageUrl: string;
     rules: WeaponRules;
 }

@@ -1,12 +1,14 @@
 import { MainLayout } from 'components/layouts';
 import { GameArea, ScoreArea } from 'components/organisms';
-import { GameContextProvider } from 'contexts';
+import { GameAreaContextProvider, GameContextProvider } from 'contexts';
 
 export default function App() {
     return (
         <GameContextProvider>
             <MainLayout>
-                <GameArea />
+                <GameAreaContextProvider>
+                    <GameArea />
+                </GameAreaContextProvider>
                 <ScoreArea />
             </MainLayout>
         </GameContextProvider>

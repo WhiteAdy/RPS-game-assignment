@@ -1,8 +1,9 @@
-import type { Dispatch, SetStateAction } from 'react';
+import type { GameAction, WeaponName } from 'contexts';
+import type { Dispatch } from 'react';
 
 interface CardPicker {
-    selectedWeapon: string | undefined;
-    setSelectedWeapon: Dispatch<SetStateAction<string | undefined>>;
+    selectedWeapon: WeaponName | undefined;
+    dispatch: Dispatch<GameAction>;
     className?: string;
 }
 

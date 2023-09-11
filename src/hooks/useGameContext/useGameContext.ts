@@ -15,6 +15,9 @@ export default function useGameContext() {
         setIsOpenWelcomeModal,
     } = useContext(GameContext);
 
+    if (!defaultWeapons)
+        throw new Error('Please wrap your component tree in a GameContextProvider!');
+
     const allWeapons = [...defaultWeapons, ...customWeapons];
 
     const findWeapon = (weaponName: WeaponName) =>

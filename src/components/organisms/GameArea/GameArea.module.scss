@@ -1,17 +1,22 @@
 .GameArea {
-    background-color: #e25858;
+    background-color: var(--bg-game-area);
     padding: var(--layout-padding);
     display: grid;
     grid-template-areas:
-        'Title Title'
-        'GameSection Sidebar'
-        'CardPicker CardPicker';
+        'Title Sidebar'
+        'GameModerator Sidebar'
+        'CardPicker Sidebar';
     grid-template-rows: 50px 1fr auto;
     grid-template-columns: 1fr 100px;
     overflow: hidden;
 
     &_Title {
         grid-area: Title;
+    }
+
+    &_GameModerator {
+        grid-area: GameModerator;
+        place-self: center;
     }
 
     &_CardPicker {
