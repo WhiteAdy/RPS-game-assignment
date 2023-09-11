@@ -1,0 +1,15 @@
+.PickingStage {
+    font-size: var(--text-large);
+    animation: pulse 1s linear infinite;
+}
+
+@keyframes pulse {
+    from {
+        scale: 10;
+        opacity: 0;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
