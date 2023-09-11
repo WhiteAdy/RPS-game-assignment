@@ -1,4 +1,4 @@
-import { GameCard } from 'components/atoms';
+import { GameCard, Title } from 'components/atoms';
 import { useGameAreaContext, useGameContext } from 'hooks';
 import type { CardPicker } from './CardPicker.types';
 import clsx from 'clsx';
@@ -17,15 +17,18 @@ export default function CardPicker({ className }: CardPicker) {
 
     return (
         <div className={clsx(['CardPicker', { [className!]: className }])}>
-            {allWeapons.map(({ name, imageUrl }, index) => (
-                <GameCard
-                    key={`GameCard-${name}-${index}`}
-                    title={name}
-                    imgSrc={imageUrl}
-                    isSelected={selectedWeapon === name}
-                    onClick={computeOnClickCard(name)}
-                />
-            ))}
+            <Title text="Choose your weapon!" />
+            <div className="CardStack">
+                {allWeapons.map(({ name, imageUrl }, index) => (
+                    <GameCard
+                        key={`GameCard-${name}-${index}`}
+                        title={name}
+                        imgSrc={imageUrl}
+                        isSelected={selectedWeapon === name}
+                        onClick={computeOnClickCard(name)}
+                    />
+                ))}
+            </div>
         </div>
     );
 }

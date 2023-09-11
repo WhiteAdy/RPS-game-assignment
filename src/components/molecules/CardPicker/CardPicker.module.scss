@@ -1,4 +1,11 @@
 .CardPicker {
     display: flex;
-    gap: var(--layout-padding);
+    flex-direction: column;
+    gap: calc(var(--layout-padding) * 2);
+    align-items: center;
+
+    .CardStack {
+        display: flex;
+        gap: var(--layout-padding);
+    }
 }
