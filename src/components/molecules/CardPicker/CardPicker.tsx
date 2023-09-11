@@ -1,11 +1,16 @@
 import { GameCard } from 'components/atoms';
-import { useGameContext } from 'hooks';
+import { useGameAreaContext, useGameContext } from 'hooks';
 import type { CardPicker } from './CardPicker.types';
 import clsx from 'clsx';
 import type { WeaponName } from 'contexts';
 
-export default function CardPicker({ selectedWeapon, dispatch, className }: CardPicker) {
+export default function CardPicker({ className }: CardPicker) {
     const { allWeapons } = useGameContext();
+    const {
+        state: { selectedWeapon },
+        dispatch,
+    } = useGameAreaContext();
+
     const computeOnClickCard = (weaponName: WeaponName) => () => {
         dispatch({ type: 'select-weapon', payload: weaponName });
     };
