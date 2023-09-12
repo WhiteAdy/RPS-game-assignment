@@ -1,7 +1,8 @@
-import { CardPicker, GameModerator, Sidebar } from 'components/molecules';
+import { CardPicker, GameModerator } from 'components/molecules';
 import { Title } from 'components/atoms';
 import clsx from 'clsx';
 import { useGameAreaContext, useGameContext } from 'hooks';
+import { Sidebar } from '..';
 
 export default function GameArea() {
     const {
