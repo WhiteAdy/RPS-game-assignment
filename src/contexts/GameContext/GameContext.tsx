@@ -7,8 +7,8 @@ import type {
     Weapons,
 } from './GameContext.types';
 import { DEFAULT_GAME_CONTEXT_VALUE, DEFAULT_WEAPONS } from './GameContext.utils';
-import { WelcomeModal } from 'components/organisms';
 import { useLocalStorage } from 'hooks';
+import { WelcomeModal } from 'components/molecules';
 
 const GameContext = createContext<GameContextValue>(DEFAULT_GAME_CONTEXT_VALUE);
 

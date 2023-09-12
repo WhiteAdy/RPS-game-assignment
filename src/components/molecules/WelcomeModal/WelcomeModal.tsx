@@ -1,6 +1,6 @@
-import { Instructions, Modal } from 'components/molecules';
+import { Modal } from 'components/molecules';
 import { useGameContext } from 'hooks';
-import { TextField } from 'components/atoms';
+import { Instructions, TextField } from 'components/atoms';
 import type { ChangeEventHandler, FormEventHandler } from 'react';
 import { useState } from 'react';
 import { DEFAULT_MODAL_BTN_PROPS, FORM_ID } from './WelcomeModal.utils';
