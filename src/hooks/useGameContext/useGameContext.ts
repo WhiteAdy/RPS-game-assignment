@@ -1,7 +1,6 @@
 import type { PlayerData, PlayerName, Weapon, WeaponName, WeaponRules } from 'contexts';
 import { DEFAULT_PLAYER_DATA, GameContext } from 'contexts';
 import { useContext } from 'react';
-import { flushSync } from 'react-dom';
 import { noop } from 'utils';
 
 export default function useGameContext() {
