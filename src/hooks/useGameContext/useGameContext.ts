@@ -50,6 +50,13 @@ export default function useGameContext() {
         return setCurrentPlayerName(playerName);
     };
 
+    const resetPlayerScore = (playerName: PlayerName) => {
+        if (playerExistsInDb(playerName)) {
+            return setGameHistory({ ...gameHistory, [playerName]: DEFAULT_PLAYER_DATA });
+        }
+        console.warn('Could not find this player in the db!');
+    };
+
     const addToPlayerScore = (scoreType: keyof PlayerData) => {
         if (gameHistory) {
             const currentPlayerData = gameHistory[currentPlayerName];
@@ -80,5 +87,6 @@ export default function useGameContext() {
         showWelcomeModal,
         isOpenWelcomeModal,
         hideWelcomeModal,
+        resetPlayerScore,
     };
 }

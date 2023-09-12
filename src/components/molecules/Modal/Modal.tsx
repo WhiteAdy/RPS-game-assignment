@@ -36,22 +36,27 @@ export default function Modal({
         [onClose]
     );
 
-    const escapeKeyPressHandler = useCallback(
+    const keydownHandler = useCallback(
         (e: KeyboardEvent) => {
-            if (e.key === 'Escape') onClose();
+            switch (e.key) {
+                case 'Enter':
+                    return onAccept();
+                case 'Escape':
+                    return onClose();
+            }
         },
-        [onClose]
+        [onAccept, onClose]
     );
 
     const addEventListeners = useCallback(() => {
         window.addEventListener('click', clickOutsideHandler);
-        window.addEventListener('keydown', escapeKeyPressHandler);
-    }, [clickOutsideHandler, escapeKeyPressHandler]);
+        window.addEventListener('keydown', keydownHandler);
+    }, [clickOutsideHandler, keydownHandler]);
 
     const removeEventListeners = useCallback(() => {
         window.removeEventListener('click', clickOutsideHandler);
-        window.removeEventListener('keydown', escapeKeyPressHandler);
-    }, [clickOutsideHandler, escapeKeyPressHandler]);
+        window.removeEventListener('keydown', keydownHandler);
+    }, [clickOutsideHandler, keydownHandler]);
 
     useEffect(() => {
         if (!isOpen) removeEventListeners();
