@@ -7,7 +7,7 @@ export type {
     PlayerData,
     WeaponRules,
 } from './GameContext/GameContext.types';
-export { DEFAULT_PLAYER_DATA } from './GameContext/GameContext.utils';
+export { DEFAULT_PLAYER_DATA, DEFAULT_GAME_CONTEXT_VALUE } from './GameContext/GameContext.utils';
 export type { Stage, GameAction, GameAreaState } from './GameAreaContext/GameAreaContext.types';
 export { INITIAL_GAME_AREA_STATE } from './GameAreaContext/GameAreaContext.utils';
 export { default as GameAreaContextProvider } from './GameAreaContext/GameAreaContext';

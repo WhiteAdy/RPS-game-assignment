@@ -17,10 +17,10 @@ export default function ResetPlayerScoreModal({ isOpen, onClose }: SidebarModal)
             onClose={onClose}
             onAccept={onAcceptResetScore}
         >
-            <form className="ResetPlayerScoreForm">
+            <div className="ResetPlayerScoreForm">
                 <p>Are you sure you want to reset the score for the following player?</p>
                 <strong>{currentPlayerName}</strong>
-            </form>
+            </div>
         </Modal>
     );
 }

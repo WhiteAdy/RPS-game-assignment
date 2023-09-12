@@ -19,7 +19,10 @@ export default function WelcomeModal() {
 
     const onSubmitForm: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
-        if (playerName) onAccept();
+        if (playerName) {
+            onAccept();
+            setPlayerName('');
+        }
     };
 
     return (

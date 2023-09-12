@@ -100,5 +100,6 @@ export default function useGameContext() {
         editWeaponRules,
         findWeapon,
         setWeapons,
+        setGameHistory,
     };
 }
