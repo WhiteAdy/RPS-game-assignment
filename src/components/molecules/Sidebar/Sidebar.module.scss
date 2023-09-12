@@ -1,0 +1,19 @@
+.Sidebar {
+    border: 1px solid var(--bg-dark);
+    border-radius: var(--border-radius);
+    width: 230px;
+    padding: var(--layout-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--layout-padding);
+
+    &_Title {
+        color: var(--text-black);
+        text-align: center;
+
+        &:not(:first-child) {
+            margin-top: calc(var(--layout-padding) * 2);
+        }
+    }
+}

@@ -6,6 +6,7 @@ export default function Button({
     className,
     type = 'button',
     title = 'Button',
+    fullWidth = false,
     children,
     ...props
 }: Button) {
@@ -16,6 +17,7 @@ export default function Button({
                 outlinedVariant: variant === 'outlined',
                 filledVariant: variant === 'filled',
                 textVariant: variant === 'text',
+                fullWidth: fullWidth,
             })}
             type={type}
             title={title}
