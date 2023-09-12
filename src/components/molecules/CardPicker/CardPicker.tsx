@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import type { Weapon } from 'contexts';
 
 export default function CardPicker({ className }: CardPicker) {
-    const { allWeapons } = useGameContext();
+    const { weapons } = useGameContext();
     const {
         state: { selectedWeapon },
         dispatch,
@@ -19,7 +19,7 @@ export default function CardPicker({ className }: CardPicker) {
         <div className={clsx(['CardPicker', { [className!]: className }])}>
             <Title text="Choose your weapon!" />
             <div className="CardStack">
-                {allWeapons.map((weapon, index) => (
+                {weapons.map((weapon, index) => (
                     <GameCard
                         key={`GameCard-${weapon.name}-${index}`}
                         title={weapon.name}

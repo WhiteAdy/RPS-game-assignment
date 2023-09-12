@@ -41,9 +41,8 @@ const DEFAULT_WEAPONS: Array<Weapon> = [
 ];
 
 const DEFAULT_GAME_CONTEXT_VALUE: GameContextValue = {
-    defaultWeapons: DEFAULT_WEAPONS,
-    customWeapons: [],
-    setCustomWeapons: noop,
+    weapons: DEFAULT_WEAPONS,
+    setWeapons: noop,
     gameHistory: null,
     setGameHistory: noop,
     currentPlayerName: '',
@@ -52,4 +51,4 @@ const DEFAULT_GAME_CONTEXT_VALUE: GameContextValue = {
     setIsOpenWelcomeModal: noop,
 };
 
-export { DEFAULT_WEAPONS, DEFAULT_GAME_CONTEXT_VALUE, DEFAULT_PLAYER_DATA };
+export { DEFAULT_GAME_CONTEXT_VALUE, DEFAULT_PLAYER_DATA };

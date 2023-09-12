@@ -1,12 +1,13 @@
-import type { PlayerData, PlayerName, Weapon, WeaponName } from 'contexts';
+import type { PlayerData, PlayerName, Weapon, WeaponName, WeaponRules } from 'contexts';
 import { DEFAULT_PLAYER_DATA, GameContext } from 'contexts';
 import { useContext } from 'react';
+import { flushSync } from 'react-dom';
+import { noop } from 'utils';
 
 export default function useGameContext() {
     const {
-        defaultWeapons,
-        customWeapons,
-        setCustomWeapons,
+        weapons,
+        setWeapons,
         currentPlayerName,
         setCurrentPlayerName,
         gameHistory,
@@ -15,13 +16,10 @@ export default function useGameContext() {
         setIsOpenWelcomeModal,
     } = useContext(GameContext);
 
-    if (!defaultWeapons)
+    if (setWeapons === noop)
         throw new Error('Please wrap your component tree in a GameContextProvider!');
 
-    const allWeapons = [...defaultWeapons, ...customWeapons];
-
-    const findWeapon = (weaponName: WeaponName) =>
-        allWeapons.find(({ name }) => name === weaponName);
+    const findWeapon = (weaponName: WeaponName) => weapons.find(({ name }) => name === weaponName);
 
     const weaponExistsInDB = (weaponName: WeaponName) => Boolean(findWeapon(weaponName));
     const playerExistsInDb = (playerName: PlayerName) => {
@@ -31,14 +29,28 @@ export default function useGameContext() {
 
     const addCustomWeapon = (newWeapon: Weapon) => {
         if (!weaponExistsInDB(newWeapon.name)) {
-            return setCustomWeapons([...customWeapons, newWeapon]);
+            return setWeapons([...weapons, newWeapon]);
+        }
+        console.warn('Weapon already exists, so no new weapon was added!');
+    };
+
+    const editWeaponRules = (weaponName: WeaponName, newRules: WeaponRules) => {
+        if (weaponExistsInDB(weaponName)) {
+            return flushSync(() => {
+                setWeapons((existingWeapons) =>
+                    existingWeapons.map((existingWeapon) => {
+                        if (existingWeapon.name !== weaponName) return existingWeapon;
+                        return { ...existingWeapon, rules: newRules };
+                    })
+                );
+            });
         }
         console.warn('Weapon already exists, so no new weapon was added!');
     };
 
     const removeCustomWeapon = (weaponName: WeaponName) => {
         if (weaponExistsInDB(weaponName)) {
-            return setCustomWeapons(customWeapons.filter(({ name }) => name !== weaponName));
+            return setWeapons(weapons.filter(({ name }) => name !== weaponName));
         }
         console.warn('Could not find this weapon in the db!');
     };
@@ -76,7 +88,7 @@ export default function useGameContext() {
 
     return {
         currentPlayerName,
-        allWeapons,
+        weapons,
         gameHistory,
         weaponExistsInDB,
         playerExistsInDb,
@@ -88,5 +100,8 @@ export default function useGameContext() {
         isOpenWelcomeModal,
         hideWelcomeModal,
         resetPlayerScore,
+        editWeaponRules,
+        findWeapon,
+        setWeapons,
     };
 }

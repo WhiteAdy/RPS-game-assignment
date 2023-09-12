@@ -6,11 +6,12 @@ export default function GameCard({
     imgSrc,
     isSelected = false,
     onClick = () => {},
+    className,
 }: GameCard) {
     return (
         <button
             type="button"
-            className={clsx(['GameCard', { isSelected: isSelected }])}
+            className={clsx(['GameCard', { isSelected: isSelected, [className!]: className }])}
             onClick={onClick}
         >
             <div className="content">

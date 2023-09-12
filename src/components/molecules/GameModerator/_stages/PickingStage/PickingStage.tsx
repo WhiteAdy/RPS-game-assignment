@@ -5,7 +5,7 @@ import { computeScoreType } from './PickingStage.utils';
 
 export default function PickingStage() {
     const [count, setCount] = useState(3);
-    const { allWeapons, addToPlayerScore } = useGameContext();
+    const { weapons, addToPlayerScore } = useGameContext();
     const {
         state: { selectedWeapon, computerSelectedWeapon },
         dispatch,
@@ -20,7 +20,7 @@ export default function PickingStage() {
 
                 dispatch({
                     type: 'select-computer-weapon',
-                    payload: pickRandomElement(allWeapons),
+                    payload: pickRandomElement(weapons),
                 });
             }
 
@@ -35,7 +35,7 @@ export default function PickingStage() {
 
     useEffect(() => {
         if (count <= 0) {
-            const randomlyPickedPlayerWeapon = pickRandomElement(allWeapons);
+            const randomlyPickedPlayerWeapon = pickRandomElement(weapons);
 
             if (!selectedWeapon) {
                 dispatch({ type: 'select-weapon', payload: randomlyPickedPlayerWeapon });
@@ -46,7 +46,7 @@ export default function PickingStage() {
                 dispatch({ type: 'change-stage', payload: 'result' });
             }
         }
-    }, [addToPlayerScore, allWeapons, computerSelectedWeapon, count, dispatch, selectedWeapon]);
+    }, [addToPlayerScore, weapons, computerSelectedWeapon, count, dispatch, selectedWeapon]);
 
     return <div className="PickingStage">{count}</div>;
 }

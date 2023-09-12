@@ -6,16 +6,16 @@ import type {
     PlayerName,
     Weapons,
 } from './GameContext.types';
-import { DEFAULT_GAME_CONTEXT_VALUE, DEFAULT_WEAPONS } from './GameContext.utils';
+import { DEFAULT_GAME_CONTEXT_VALUE } from './GameContext.utils';
 import { useLocalStorage } from 'hooks';
 import { WelcomeModal } from 'components/molecules';
 
 const GameContext = createContext<GameContextValue>(DEFAULT_GAME_CONTEXT_VALUE);
 
 export default function GameContextProvider({ children }: GameContextProvider) {
-    const [customWeapons, setCustomWeapons] = useLocalStorage<Weapons>(
-        'RPC:custom-weapons',
-        DEFAULT_GAME_CONTEXT_VALUE.customWeapons
+    const [weapons, setWeapons] = useLocalStorage<Weapons>(
+        'RPC:weapons',
+        DEFAULT_GAME_CONTEXT_VALUE.weapons
     );
     const [gameHistory, setGameHistory] = useLocalStorage<GameHistory>(
         'RPC:game-history',
@@ -27,9 +27,8 @@ export default function GameContextProvider({ children }: GameContextProvider) {
     return (
         <GameContext.Provider
             value={{
-                defaultWeapons: DEFAULT_WEAPONS,
-                customWeapons,
-                setCustomWeapons,
+                weapons,
+                setWeapons,
                 gameHistory,
                 setGameHistory,
                 currentPlayerName,

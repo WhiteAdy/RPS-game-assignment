@@ -31,7 +31,7 @@
         height: calc(100% - 7px);
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
         gap: var(--layout-padding);
         border-radius: inherit;
@@ -52,7 +52,9 @@
         }
 
         .title {
-            font-size: 18px;
+            font-size: 14px;
+            width: 100%;
+            overflow-wrap: anywhere;
         }
 
         .image {

@@ -24,9 +24,8 @@ type GameHistory = Record<PlayerName, PlayerData> | null;
 type Weapons = Array<Weapon>;
 
 interface GameContextValue {
-    defaultWeapons: Weapons;
-    customWeapons: Weapons;
-    setCustomWeapons: Dispatch<SetStateAction<Weapons>>;
+    weapons: Weapons;
+    setWeapons: Dispatch<SetStateAction<Weapons>>;
     gameHistory: GameHistory;
     setGameHistory: Dispatch<SetStateAction<GameHistory>>;
     currentPlayerName: PlayerName;
@@ -48,4 +47,5 @@ export type {
     Weapons,
     GameHistory,
     PlayerData,
+    WeaponRules,
 };

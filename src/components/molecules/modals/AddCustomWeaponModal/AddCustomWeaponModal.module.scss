@@ -1,0 +1,54 @@
+.AddCustomWeaponForm {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--layout-padding);
+    background: var(--bg-lighter);
+    border-radius: var(--border-radius);
+    padding: var(--layout-padding);
+    height: 100%;
+
+    .NewCardWithInputs {
+        gap: var(--layout-padding);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .NewWeaponCard {
+            grid-row: 1 / -1;
+            grid-column: 1 / 2;
+        }
+
+        .Input {
+            grid-column: 2 / 3;
+        }
+    }
+
+    .OtherWeapons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-padding);
+        overflow-y: auto;
+
+        .OtherWeaponsContainer {
+            display: grid;
+            justify-content: flex-end;
+            grid-template-columns: repeat(5, 90px);
+            grid-template-rows: repeat(auto-fit, 1fr);
+            gap: calc(var(--layout-padding) / 2);
+            width: 100%;
+            margin-top: auto;
+
+            .ExistingWeaponCard {
+                width: 100%;
+                height: unset;
+                aspect-ratio: 2/3;
+                scale: 1;
+                margin: 0;
+
+                h6 {
+                    font-size: var(--text-xxs);
+                }
+            }
+        }
+    }
+}
