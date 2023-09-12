@@ -10,7 +10,7 @@
         grid-template-columns: repeat(4, 1fr);
         gap: calc(var(--layout-padding) / 2);
         font-size: var(--text-xs);
-        overflow-y: scroll;
+        overflow-y: auto;
         max-height: calc(100% - calc(var(--layout-padding) * 2));
 
         .Label {
