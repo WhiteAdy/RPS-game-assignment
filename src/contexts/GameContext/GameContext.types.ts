@@ -7,12 +7,10 @@ interface PlayerData {
     wins: number;
     losses: number;
     draws: number;
-    totalPlays: number;
 }
 
 interface WeaponRules {
     defeats: Array<WeaponName>;
-    defeatedBy: Array<WeaponName>;
 }
 
 interface Weapon {

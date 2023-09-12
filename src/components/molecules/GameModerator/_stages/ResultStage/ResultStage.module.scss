@@ -1,3 +1,37 @@
 .ResultStage {
-    color: red;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--layout-padding) * 2);
+    align-items: center;
+
+    .PicksContainer {
+        display: flex;
+        gap: calc(var(--layout-padding) * 3);
+        justify-content: space-between;
+
+        .Pick {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--layout-padding) / 2);
+
+            > span {
+                font-size: var(--text-medium);
+                text-align: center;
+            }
+        }
+    }
+
+    .ResultsText {
+        font-size: var(--text-large);
+
+        &.isWin {
+            color: rgb(20, 223, 20);
+        }
+        &.isLose {
+            color: rgb(255, 199, 199);
+        }
+        &.isDraw {
+            color: #fff;
+        }
+    }
 }

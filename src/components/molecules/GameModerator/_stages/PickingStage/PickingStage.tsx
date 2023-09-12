@@ -1,34 +1,52 @@
 import { useGameAreaContext, useGameContext } from 'hooks';
 import { useEffect, useState } from 'react';
 import { pickRandomElement } from 'utils';
+import { computeScoreType } from './PickingStage.utils';
 
 export default function PickingStage() {
-    const [secondsLeft, setSecondsLeft] = useState(3);
-    const { allWeapons } = useGameContext();
+    const [count, setCount] = useState(3);
+    const { allWeapons, addToPlayerScore } = useGameContext();
     const {
-        state: { selectedWeapon },
+        state: { selectedWeapon, computerSelectedWeapon },
         dispatch,
     } = useGameAreaContext();
 
     useEffect(() => {
         const countdown = setInterval(() => {
-            setSecondsLeft((secondsLeft) => secondsLeft - 1);
+            const secondsLeft = count - 1;
+
+            if (secondsLeft <= 0) {
+                clearInterval(countdown);
+
+                dispatch({
+                    type: 'select-computer-weapon',
+                    payload: pickRandomElement(allWeapons),
+                });
+            }
+
+            setCount(count - 1);
         }, 1000);
 
         return () => {
             clearInterval(countdown);
         };
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [count]);
 
     useEffect(() => {
-        if (secondsLeft <= 0) {
+        if (count <= 0) {
+            const randomlyPickedPlayerWeapon = pickRandomElement(allWeapons);
+
             if (!selectedWeapon) {
-                dispatch({ type: 'select-weapon', payload: pickRandomElement(allWeapons).name });
-            } else {
+                dispatch({ type: 'select-weapon', payload: randomlyPickedPlayerWeapon });
+            }
+
+            if (selectedWeapon && computerSelectedWeapon) {
+                addToPlayerScore(computeScoreType(selectedWeapon, computerSelectedWeapon));
                 dispatch({ type: 'change-stage', payload: 'result' });
             }
         }
-    }, [allWeapons, dispatch, secondsLeft, selectedWeapon]);
+    }, [addToPlayerScore, allWeapons, computerSelectedWeapon, count, dispatch, selectedWeapon]);
 
-    return <div className="PickingStage">{secondsLeft}</div>;
+    return <div className="PickingStage">{count}</div>;
 }

@@ -12,8 +12,8 @@ export default function Instructions() {
                     leaderboard.
                 </li>
                 <li>
-                    After you click "Begin round" you will have 3 seconds to choose your weapon,
-                    otherwise a random one will be chosen for you.
+                    After you click "Begin a new round!" you will have 3 seconds to choose your
+                    weapon, otherwise a random one will be chosen for you.
                 </li>
                 <li>
                     You can add your own weapons and rules! Do that by clicking "Add weapons"

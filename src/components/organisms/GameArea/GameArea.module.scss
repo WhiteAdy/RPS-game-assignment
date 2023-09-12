@@ -20,13 +20,14 @@
     }
 
     &_CardPicker {
-        transition: translate var(--transition-duration) var(--transition-tf-wobble);
+        transition: transform var(--transition-duration) var(--transition-tf-ease);
         grid-area: CardPicker;
         justify-self: center;
-        translate: 0 300px;
+        transform: translateY(300px);
 
         &.show {
-            translate: 0 -20px;
+            transition: transform var(--transition-duration) var(--transition-tf-wobble);
+            transform: translateY(-20px);
         }
     }
 }

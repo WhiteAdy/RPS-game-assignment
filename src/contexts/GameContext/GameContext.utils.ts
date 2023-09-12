@@ -14,7 +14,6 @@ const DEFAULT_PLAYER_DATA: PlayerData = {
     wins: 0,
     losses: 0,
     draws: 0,
-    totalPlays: 0,
 };
 
 const DEFAULT_WEAPONS: Array<Weapon> = [
@@ -23,7 +22,6 @@ const DEFAULT_WEAPONS: Array<Weapon> = [
         imageUrl: rockImageUrl,
         rules: {
             defeats: [DEFAULT_WEAPON_NAMES.SCISSORS],
-            defeatedBy: [DEFAULT_WEAPON_NAMES.PAPER],
         },
     },
     {
@@ -31,7 +29,6 @@ const DEFAULT_WEAPONS: Array<Weapon> = [
         imageUrl: paperImageUrl,
         rules: {
             defeats: [DEFAULT_WEAPON_NAMES.ROCK],
-            defeatedBy: [DEFAULT_WEAPON_NAMES.SCISSORS],
         },
     },
     {
@@ -39,7 +36,6 @@ const DEFAULT_WEAPONS: Array<Weapon> = [
         imageUrl: scissorsImageUrl,
         rules: {
             defeats: [DEFAULT_WEAPON_NAMES.PAPER],
-            defeatedBy: [DEFAULT_WEAPON_NAMES.ROCK],
         },
     },
 ];

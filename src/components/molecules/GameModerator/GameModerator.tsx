@@ -1,24 +1,19 @@
 import clsx from 'clsx';
 import type { GameModerator } from './GameModerator.types';
-import { PickingStage, PreGameStage, ResultStage } from './_stages';
 import { useGameAreaContext } from 'hooks';
+import { useMemo } from 'react';
+import { selectStageComponent } from './GameModerator.utils';
 
 export default function GameModerator({ className }: GameModerator) {
     const {
         state: { currentStage },
     } = useGameAreaContext();
 
-    const renderStage = () => {
-        switch (currentStage) {
-            case 'pre-game':
-                return <PreGameStage />;
-            case 'picking':
-                return <PickingStage />;
-            case 'result':
-                return <ResultStage />;
-        }
-    };
+    const CurrentStage = useMemo(() => selectStageComponent(currentStage), [currentStage]);
+
     return (
-        <div className={clsx(['GameModerator', { [className!]: className }])}>{renderStage()}</div>
+        <div className={clsx(['GameModerator', { [className!]: className }])}>
+            <CurrentStage />
+        </div>
     );
 }

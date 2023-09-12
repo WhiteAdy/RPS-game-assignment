@@ -1,7 +1,7 @@
 interface GameCard {
     title: string;
     imgSrc: string;
-    onClick: () => void;
+    onClick?: () => void;
     isSelected?: boolean;
 }
 

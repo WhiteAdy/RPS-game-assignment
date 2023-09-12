@@ -9,7 +9,7 @@ export default function PreGameStage() {
     return (
         <div className="PreGameStage">
             <span>Ready to start playing?</span>
-            <Button onClick={onClickBeginBtn}>Begin round!</Button>
+            <Button onClick={onClickBeginBtn}>Begin a new round!</Button>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import type { WeaponName } from 'contexts';
+import type { Weapon } from 'contexts';
 import type { Dispatch, ReactNode } from 'react';
 
 type Stage = 'pre-game' | 'picking' | 'result';
@@ -10,7 +10,11 @@ type GameAction =
       }
     | {
           type: 'select-weapon';
-          payload: WeaponName;
+          payload: Weapon;
+      }
+    | {
+          type: 'select-computer-weapon';
+          payload: Weapon;
       }
     | {
           type: 'start-new-round';
@@ -19,7 +23,8 @@ type GameAction =
 
 interface GameAreaState {
     currentStage: Stage;
-    selectedWeapon: WeaponName | undefined;
+    selectedWeapon: Weapon | undefined;
+    computerSelectedWeapon: Weapon | undefined;
 }
 
 interface GameAreaContextValue {

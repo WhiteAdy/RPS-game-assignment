@@ -1,9 +1,15 @@
 import { noop } from 'utils';
-import type { GameAction, GameAreaContextValue, GameAreaState } from './GameAreaContext.types';
+import type {
+    GameAction,
+    GameAreaContextValue,
+    GameAreaState,
+    Stage,
+} from './GameAreaContext.types';
 
 const INITIAL_GAME_AREA_STATE: GameAreaState = {
     currentStage: 'pre-game',
     selectedWeapon: undefined,
+    computerSelectedWeapon: undefined,
 };
 
 const DEFAULT_GAME_AREA_CONTEXT_VALUE: GameAreaContextValue = {
@@ -17,8 +23,10 @@ const gameAreaReducer = (state: GameAreaState, { type, payload }: GameAction) =>
             return { ...state, currentStage: payload };
         case 'select-weapon':
             return { ...state, selectedWeapon: payload };
+        case 'select-computer-weapon':
+            return { ...state, computerSelectedWeapon: payload };
         case 'start-new-round':
-            return INITIAL_GAME_AREA_STATE;
+            return { ...INITIAL_GAME_AREA_STATE, currentStage: 'picking' as Stage };
         default:
             return state;
     }
