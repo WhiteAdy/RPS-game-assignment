@@ -33,7 +33,6 @@
             display: grid;
             justify-content: flex-end;
             grid-template-columns: repeat(5, 90px);
-            grid-template-rows: repeat(auto-fit, 1fr);
             gap: calc(var(--layout-padding) / 2);
             width: 100%;
             margin-top: auto;

@@ -22,7 +22,7 @@ export default function Sidebar({ className }: Sidebar) {
                 variant="filled"
                 onClick={() => switchModalState({ type: 'changePlayerName', payload: true })}
             >
-                Change player name
+                Change current player
             </Button>
             <Button
                 fullWidth
@@ -37,14 +37,14 @@ export default function Sidebar({ className }: Sidebar) {
                 variant="filled"
                 onClick={() => switchModalState({ type: 'addCustomWeapon', payload: true })}
             >
-                Add custom weapon
+                Add a custom weapon
             </Button>
             <Button
                 fullWidth
                 variant="filled"
                 onClick={() => switchModalState({ type: 'removeCustomWeapon', payload: true })}
             >
-                Remove custom weapon
+                Remove weapons
             </Button>
             <Title text="Game" className="Sidebar_Title" />
             <Button

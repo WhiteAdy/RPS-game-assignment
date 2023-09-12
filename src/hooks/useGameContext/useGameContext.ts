@@ -36,14 +36,12 @@ export default function useGameContext() {
 
     const editWeaponRules = (weaponName: WeaponName, newRules: WeaponRules) => {
         if (weaponExistsInDB(weaponName)) {
-            return flushSync(() => {
-                setWeapons((existingWeapons) =>
-                    existingWeapons.map((existingWeapon) => {
-                        if (existingWeapon.name !== weaponName) return existingWeapon;
-                        return { ...existingWeapon, rules: newRules };
-                    })
-                );
-            });
+            return setWeapons((existingWeapons) =>
+                existingWeapons.map((existingWeapon) => {
+                    if (existingWeapon.name !== weaponName) return existingWeapon;
+                    return { ...existingWeapon, rules: newRules };
+                })
+            );
         }
         console.warn('Weapon already exists, so no new weapon was added!');
     };

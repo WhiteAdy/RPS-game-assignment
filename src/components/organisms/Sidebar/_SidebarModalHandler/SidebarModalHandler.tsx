@@ -1,7 +1,7 @@
 import {
     AddCustomWeaponModal,
     ChangePlayerNameModal,
-    RemoveCustomWeaponModal,
+    RemoveWeaponModal,
     ResetGameModal,
     ResetPlayerScoreModal,
 } from 'components/molecules';
@@ -13,10 +13,7 @@ export default function SidebarModalHandler({ isModalOpen, closeAllModals }: Sid
             <ChangePlayerNameModal isOpen={isModalOpen.changePlayerName} onClose={closeAllModals} />
             <ResetPlayerScoreModal isOpen={isModalOpen.resetPlayerScore} onClose={closeAllModals} />
             <AddCustomWeaponModal isOpen={isModalOpen.addCustomWeapon} onClose={closeAllModals} />
-            <RemoveCustomWeaponModal
-                isOpen={isModalOpen.removeCustomWeapon}
-                onClose={closeAllModals}
-            />
+            <RemoveWeaponModal isOpen={isModalOpen.removeCustomWeapon} onClose={closeAllModals} />
             <ResetGameModal isOpen={isModalOpen.resetGame} onClose={closeAllModals} />
         </>
     );

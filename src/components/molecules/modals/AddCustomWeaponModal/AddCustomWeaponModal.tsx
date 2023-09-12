@@ -39,7 +39,7 @@ export default function AddCustomWeaponModal({ isOpen, onClose }: SidebarModal) 
         setNewWeaponImg(e.target.value);
     };
 
-    const onClickAvailableWeapon = (name: string, winOrLoseAgainst: 'win' | 'lose') => () => {
+    const onClickAvailableWeapon = (name: WeaponName, winOrLoseAgainst: 'win' | 'lose') => () => {
         const computedGetter =
             winOrLoseAgainst === 'win' ? weaponsToWinAgainst : weaponsToLoseAgainst;
 

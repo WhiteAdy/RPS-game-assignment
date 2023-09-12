@@ -1,0 +1,28 @@
+.RemoveWeaponModalForm {
+    background: var(--bg-lighter);
+    border-radius: var(--border-radius);
+    padding: var(--layout-padding);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--layout-padding) * 2);
+
+    .InnerContainer {
+        display: grid;
+        grid-template-columns: repeat(7, 90px);
+        gap: calc(var(--layout-padding) / 2);
+        width: 100%;
+
+        .WeaponCard {
+            width: 100%;
+            height: unset;
+            aspect-ratio: 2/3;
+            scale: 1;
+            margin: 0;
+
+            h6 {
+                font-size: var(--text-xxs);
+            }
+        }
+    }
+}

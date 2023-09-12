@@ -25,7 +25,7 @@ export default function ChangePlayerNameModal({ isOpen, onClose }: SidebarModal)
 
     return (
         <Modal
-            title="Change player name"
+            title="Change current player"
             isOpen={isOpen}
             onClose={onClose}
             acceptBtnProps={{
