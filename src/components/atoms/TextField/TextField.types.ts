@@ -8,6 +8,7 @@ interface TextField {
     maxLength?: number;
     fullWidth?: boolean;
     autoFocus?: boolean;
+    className?: string;
 }
 
 export type { TextField };

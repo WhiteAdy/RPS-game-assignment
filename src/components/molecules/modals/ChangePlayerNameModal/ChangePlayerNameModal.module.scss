@@ -1,0 +1,11 @@
+.ChangePlayerNameForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+
+    &_InputContainer {
+        width: fit-content;
+    }
+}
