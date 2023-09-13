@@ -1,27 +1,44 @@
-# React + TypeScript + Vite
+# Rock Paper Scissors game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This Vite+React project was done as a technical task/assignment.
 
-Currently, two official plugins are available:
+The list of technologies used are the following:
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   React 18
+-   Typescript 5
+-   CSS modules (with Sass)
+-   ESLint
+-   Prettier
 
-## Expanding the ESLint configuration
+## Running the app
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+There are two ways to run the app in the browser:
 
--   Configure the top-level `parserOptions` property like this:
+-   Visiting the [game deployed to GitHub Pages here](https://whiteady.github.io/RPS-game-assignment)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+-   Running the dev server locally by following the below steps:
+    -   Clone the project
+    -   Verify that you have Node 18+ installed on your machine
+    -   Run the `npm install` command to install the dependencies
+    -   Run the `npm run dev` command to serve the app locally
+    -   In your browser go to http://localhost:5173/RPS-game-assignment
 
--   Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
--   Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Project structure description
+
+This project follows the **Atomic Design** system for breaking up the UI components into composable units arranged into following levels:
+
+-   Atoms
+-   Molecules
+-   Organisms
+-   Layouts
+
+Components that are further down the list of levels contain one or more from the levels above. For example, a Molecule can have 2 Atoms, and an Organism can have 1 Molecule and 2 Atoms etc.
+
+**ESLint** is used to maintain consistency and best-practices throughout the code. Some of the most recommended rules are applied, and extended in the `.eslintrc.cjs` file.
+
+**Prettier** is used to format the code automatically and consistently following the rules specified in the ``prettierrc` file.
+
+**Absolute Paths** are configured in the `tsconfig.json` to make imports cleaner and more consistent e.g: <br>
+`import { Button } from 'components/layout'`<br>
+vs: <br>
+`import { Button } from '../../../Button/Button`
